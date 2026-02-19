@@ -1,0 +1,2437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Midwayflow — Seedance 2.0 Waitlist</title>
+
+  <script>
+    /**
+     * ============================================
+     * EDIT THESE FIRST (ALL REPLACEABLE ASSETS)
+     * ============================================
+     * 1) HERO BACKGROUND VIDEO (LANDSCAPE vs PORTRAIT):
+     *    - CONFIG.media.heroVideoLandscapeUrl  (desktop / landscape screens)
+     *    - CONFIG.media.heroVideoPortraitUrl   (mobile / portrait screens)
+     *    - CONFIG.media.heroPosterLandscapeUrl (IMAGE URL, optional)
+     *    - CONFIG.media.heroPosterPortraitUrl  (IMAGE URL, optional)
+     *    - CONFIG.media.heroFallbackImageLandscapeUrl (IMAGE URL, optional)
+     *    - CONFIG.media.heroFallbackImagePortraitUrl  (IMAGE URL, optional)
+     *
+     *    Backward compatible fields (still supported):
+     *    - CONFIG.media.heroVideoUrl
+     *    - CONFIG.media.heroPosterUrl
+     *    - CONFIG.media.heroFallbackImageUrl
+     *
+     * 2) DEMO VIDEOS (each should be different):
+     *    - CONFIG.media.demoVideos[i].video
+     *    - CONFIG.media.demoVideos[i].thumb
+     *    - CONFIG.media.demoVideos[i].poster (optional)
+     *
+     * 3) TESTIMONIAL AVATAR IMAGES:
+     *    - CONFIG.testimonials.items[i].avatar
+     */
+    const CONFIG = {
+      links: {
+        home: "#top",
+        login: "#login",
+        signup: "#top",
+        showLogin: false // set true ONLY if you have a real product login
+      },
+
+      brand: { name: "Midwayflow" },
+
+      theme: {
+        accentA: "#7c3aed",
+        accentB: "#a78bfa",
+        bgTop: "#070416",
+        bgBottom: "#04020b",
+        uiScale: 1.22
+      },
+
+      media: {
+        // HERO background promo video (muted autoplay). Replace these:
+
+        // ✅ Recommended config (separate videos for better cropping/composition):
+        // Landscape (desktop / landscape screens):
+        heroVideoLandscapeUrl: "https://ik.imagekit.io/basicwareai/Lark20260219-205540.mp4",   // <-- 16:9 / horizontal
+        // Portrait (phones / portrait screens):
+        heroVideoPortraitUrl:  "https://ik.imagekit.io/basicwareai/Lark20260219-205540.mp4",   // <-- 9:16 / vertical (replace when you have it)
+
+        // Posters should be IMAGES (jpg/png/webp). Leave "" if you don’t have.
+        heroPosterLandscapeUrl: "",
+        heroPosterPortraitUrl:  "",
+
+        // Fallback background images should be IMAGES. Leave "" if you don’t have.
+        heroFallbackImageLandscapeUrl: "",
+        heroFallbackImagePortraitUrl:  "",
+
+        // Backward compatibility (still supported if you only set these):
+        heroVideoUrl: "https://ik.imagekit.io/basicwareai/Lark20260219-205540.mp4",
+        heroPosterUrl: "",
+        heroFallbackImageUrl: "",
+
+        // DEMO selector videos (each can be different)
+        demoVideos: [
+          {
+            title: "Prompt → cinematic clip",
+            subtitle: "Text-only generation demo",
+            thumb: "https://picsum.photos/seed/midwayflow-1/640/360",
+            poster: "https://picsum.photos/seed/midwayflow-1-p/1280/720",
+            video: "https://ik.imagekit.io/basicwareai/Lark20260219-205540.mp4"
+          },
+          {
+            title: "Reference-aware style",
+            subtitle: "Guide with references",
+            thumb: "https://picsum.photos/seed/midwayflow-2/640/360",
+            poster: "https://picsum.photos/seed/midwayflow-2-p/1280/720",
+            video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+          },
+          {
+            title: "Multi-shot continuity",
+            subtitle: "Sequences that connect",
+            thumb: "https://picsum.photos/seed/midwayflow-3/640/360",
+            poster: "https://picsum.photos/seed/midwayflow-3-p/1280/720",
+            video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+          },
+          {
+            title: "High-energy motion",
+            subtitle: "Dynamic action pacing",
+            thumb: "https://picsum.photos/seed/midwayflow-4/640/360",
+            poster: "https://picsum.photos/seed/midwayflow-4-p/1280/720",
+            video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+          }
+        ]
+      },
+
+      waitlist: {
+        endpoint: "",
+        method: "POST",
+        successMessage: "You’re on the list — we’ll email you when access opens.",
+        errorMessage: "Something went wrong. Please try again."
+      },
+
+      hero: {
+        bigNumber: "2",
+        badge: "Early access waitlist",
+        headlineLead: "Be the first to create with",
+        productName: "Seedance 2.0",
+        subcopy:
+          "Official partner access through Midwayflow — built for creators and developers who want fast iteration, stable throughput, and clean deployment.",
+        ctaLabel: "Get notified when it’s ready",
+        emailPlaceholder: "you@company.com",
+        buttonText: "Notify me",
+        finePrint: "No spam. One email when access opens.",
+        scrollHint: "Scroll to explore what Seedance 2.0 can do"
+      },
+
+      why: {
+        title: "Why Midwayflow",
+        items: [
+          {
+            chip: "Access",
+            title: "Official partner access",
+            desc: "Get early Seedance 2.0 API access through Midwayflow — with globally competitive pricing and a clear onboarding path."
+          },
+          {
+            chip: "Global",
+            title: "Global AI API all-in-one",
+            desc: "One integration to route across regions and providers — unified auth, unified billing, production-ready throughput."
+          },
+          {
+            chip: "Reliability",
+            title: "Global cloud partner backbone",
+            desc: "Built on top-tier cloud partners for stable capacity, consistent availability, and predictable performance at scale."
+          },
+          {
+            chip: "Deploy",
+            title: "One-click, mobile-ready",
+            desc: "Launch quickly and run workflows from desktop or phone — without setup headaches."
+          }
+        ]
+      },
+
+      sections: {
+        videosTitle: "VIDEOS GENERATED WITH SEEDANCE 2.0",
+        videosDesc: "Click a demo to preview. Replace these with your own clips anytime.",
+
+        // Capabilities list (restored: not only 4)
+        capabilitiesTitle: "Capabilities",
+        capabilitiesDesc: "Mirrors the demos above — built for fast iteration and repeatable production.",
+        capabilities: [
+          { title: "One-step video recreation", desc: "Go from a single prompt to a complete clip for rapid remakes and concept validation." },
+          { title: "Unified multi-input guidance", desc: "Combine text with image/video/audio references to steer style, identity, and motion." },
+          { title: "Frame-stable precision", desc: "Maintain characters, objects, and composition across the timeline with stronger continuity." },
+          { title: "Multi-shot storytelling", desc: "Build sequences that connect naturally across shots with coherent pacing and intent." },
+          { title: "High-energy action scenes", desc: "Generate fast-paced motion with believable dynamics and coherent interactions." }
+        ],
+
+        // Testimonials (replaces community section content)
+        communityTitle: "What early builders say",
+        communityDesc: "Short, real-world notes from teams testing Midwayflow workflows.",
+
+        communityCtaTitle: "Join the waitlist to get the launch kit",
+        communityCtaDesc: "Templates, demo packs, and rollout notes — built for repeatable production.",
+
+        pricingTitle: "Pricing preview",
+        pricingDesc: "Pick a lane — start solo, then scale to a team when your workflow is ready.",
+        pricingToggleA: "Individual",
+        pricingToggleB: "Team",
+        pricingPlans: {
+          individual: [
+            { name: "Starter", price: "From $X / mo", bullets: ["Early API access lane", "Core generation + references", "Mobile-friendly usage"] },
+            { name: "Pro", price: "From $XX / mo", bullets: ["Higher throughput", "Priority updates", "Advanced control options"] }
+          ],
+          team: [
+            { name: "Studio", price: "From $XXX / mo", bullets: ["Team seats", "Shared presets + workflows", "Higher concurrency"] },
+            { name: "Enterprise", price: "Talk to us", bullets: ["Custom throughput", "Support & rollout planning", "Security + controls"] }
+          ]
+        },
+
+        cta2Title: "Ready to be first in line?",
+        cta2Desc: "Join the Midwayflow waitlist and get notified the moment access opens.",
+
+        faqTitle: "Q&A",
+        faqDesc: "Short answers — built for scanning.",
+        faqs: [
+          { q: "What do I get after joining the waitlist?", a: "You’ll receive a notification when access opens, plus a launch kit with workflow templates and demo references." },
+          { q: "Is this a queue like other sites?", a: "No. The goal is predictable access and stable throughput rather than a waiting-room experience." },
+          { q: "Can I use this on mobile?", a: "Yes — the flow is designed to be usable from phone or desktop. Replace demo media with your own assets anytime." },
+          { q: "Do you collect more than email?", a: "Not on this page. Start frictionless; collect extra details later if needed." }
+        ]
+      },
+
+      testimonials: {
+        // Auto-advance timing:
+        intervalMs: 4800,
+
+        // NOTE: Avatar circles use images, not names/initials
+        items: [
+          {
+            tag: "Throughput",
+            quote: "Finally feels predictable. We stopped planning around queue luck.",
+            author: "Anonymous · Producer, Short-form Studio (JP)",
+            avatar: "https://picsum.photos/seed/mw-a1/96/96"
+          },
+          {
+            tag: "Partner Access",
+            quote: "Getting Seedance 2.0 access through Midwayflow was the cleanest path.",
+            author: "Anonymous · Dev Lead, Creative Tools (US)",
+            avatar: "https://picsum.photos/seed/mw-a2/96/96"
+          },
+          {
+            tag: "Global Routing",
+            quote: "One integration, global coverage. I don’t want to maintain five providers.",
+            author: "Anonymous · Backend Engineer, Media SaaS (SG)",
+            avatar: "https://picsum.photos/seed/mw-a3/96/96"
+          },
+          {
+            tag: "Onboarding",
+            quote: "Templates saved us a week. We shipped a repeatable workflow on day one.",
+            author: "Anonymous · PM, Creator Platform (IN)",
+            avatar: "https://picsum.photos/seed/mw-a4/96/96"
+          },
+          {
+            tag: "Reliability",
+            quote: "Stable availability mattered more than we expected once we went daily.",
+            author: "Anonymous · Ops, Content Team (MX)",
+            avatar: "https://picsum.photos/seed/mw-a5/96/96"
+          },
+          {
+            tag: "Support Loop",
+            quote: "When outputs went weird, we got a clear fix fast. Real feedback loop.",
+            author: "Anonymous · Founder, Tool Startup (SE)",
+            avatar: "https://picsum.photos/seed/mw-a6/96/96"
+          }
+        ]
+      },
+
+      footer: { privacy: "#privacy", terms: "#terms", contact: "#contact" }
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accentA:#7c3aed;
+      --accentB:#a78bfa;
+      --bgTop:#070416;
+      --bgBottom:#04020b;
+      --scale:1.22;
+
+      --text: rgba(255,255,255,.94);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.52);
+
+      --glass: rgba(255,255,255,.085);
+      --glass2: rgba(255,255,255,.055);
+      --stroke: rgba(255,255,255,.14);
+      --stroke2: rgba(255,255,255,.22);
+
+      --shadow: 0 34px 110px rgba(0,0,0,.58);
+      --shadow2: 0 18px 80px rgba(0,0,0,.48);
+      --radius: 26px;
+      --radius2: 20px;
+      --blur: 18px;
+
+      --container: min(1480px, 94vw);
+      --navH: 76px;
+
+      --safeL: env(safe-area-inset-left, 0px);
+      --safeR: env(safe-area-inset-right, 0px);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 720px at 50% 34%, rgba(124,58,237,.22), transparent 62%),
+        radial-gradient(1100px 780px at 50% 78%, rgba(167,139,250,.14), transparent 70%),
+        linear-gradient(180deg, var(--bgTop), var(--bgBottom));
+      overflow-x:hidden;
+      transform: translateZ(0);
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{
+      width: var(--container);
+      margin: 0 auto;
+      padding-left: calc(12px + var(--safeL));
+      padding-right: calc(12px + var(--safeR));
+    }
+
+    .glass{
+      background: linear-gradient(180deg, var(--glass), var(--glass2));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      border-radius: var(--radius);
+      position: relative;
+      overflow:hidden;
+    }
+
+    header{
+      position: sticky;
+      top:0;
+      z-index:50;
+      height: var(--navH);
+      display:flex;
+      align-items:center;
+      background: linear-gradient(180deg, rgba(5,3,10,.74), rgba(5,3,10,.20));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .navShell{
+      width: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .navInner{
+      width: var(--container);
+      margin: 0 auto;
+      padding-left: calc(12px + var(--safeL));
+      padding-right: calc(12px + var(--safeR));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+    }
+
+    .navFrame{
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+
+    .nav-left{ display:flex; align-items:center; gap: 14px; min-width:0; }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+      font-size: calc(18px * var(--scale));
+      letter-spacing: .2px;
+    }
+    .mark{
+      width: calc(34px * var(--scale));
+      height: calc(34px * var(--scale));
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accentB), var(--accentA));
+      box-shadow: 0 18px 54px rgba(124,58,237,.28);
+      flex: 0 0 auto;
+    }
+    .nav-link{
+      padding: 12px 14px;
+      border-radius: 999px;
+      color: rgba(255,255,255,.78);
+      font-weight: 900;
+      font-size: calc(14px * var(--scale));
+    }
+    .nav-link:hover{ background: rgba(255,255,255,.07); }
+
+    .nav-right{ display:flex; gap: 10px; align-items:center; }
+    .btn{
+      height: calc(44px * var(--scale));
+      padding: 0 calc(16px * var(--scale));
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-weight: 900;
+      font-size: calc(13.5px * var(--scale));
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.08); }
+    .btn.primary{
+      border-color: rgba(124,58,237,.55);
+      background: linear-gradient(135deg, var(--accentA), var(--accentB));
+      box-shadow: 0 18px 60px rgba(124,58,237,.24);
+      color: #0b0713;
+    }
+
+    /* Shared icon button (glass consistent) */
+    .iconBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      height: calc(40px * var(--scale));
+      padding: 0 calc(12px * var(--scale));
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.90);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 18px 64px rgba(0,0,0,.30);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      cursor:pointer;
+    }
+    .iconBtn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(167,139,250,.22);
+      background: rgba(255,255,255,.08);
+    }
+    .iconBtn svg{ width: 18px; height: 18px; opacity:.92; }
+    .iconBtn:focus-visible{
+      outline:none;
+      box-shadow:
+        0 18px 64px rgba(0,0,0,.30),
+        0 0 0 4px rgba(124,58,237,.22);
+      border-color: rgba(167,139,250,.44);
+    }
+
+    main.hero{
+      position: relative;
+      min-height: calc(100svh - var(--navH));
+      display:flex;
+      align-items:center;
+      padding: clamp(22px, 3.4vw, 52px) 0 clamp(70px, 6vw, 92px);
+      isolation: isolate;
+    }
+
+    /* HERO background layers */
+    .hero-media{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      overflow:hidden;
+      background:
+        radial-gradient(1200px 720px at 50% 34%, rgba(124,58,237,.20), transparent 62%),
+        linear-gradient(180deg, rgba(0,0,0,.50), rgba(0,0,0,.78)),
+        url("") center/cover no-repeat;
+    }
+    .hero-media video{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      opacity:.62;
+      filter: saturate(1.06) contrast(1.10) brightness(.78);
+      transform: scale(1.05);
+      pointer-events:none;
+      user-select:none;
+      -webkit-user-select:none;
+    }
+
+    /* Readability overlay (separate layer, BELOW big number, ABOVE video) */
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+      background:
+        radial-gradient(1200px 740px at 50% 35%, rgba(124,58,237,.22), transparent 60%),
+        radial-gradient(1200px 820px at 50% 78%, rgba(0,0,0,.56), rgba(0,0,0,.90));
+    }
+
+    /* BIG NUMBER watermark (centered correctly) */
+    .bigNum{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform: translate(-50%,-50%);
+      width: 100%;
+      height: 100%;
+      display:grid;
+      place-items:center;
+      z-index:2;
+      pointer-events:none;
+      opacity:.95;
+    }
+    .bigNum span{
+      font-size: clamp(560px, 54vw, 1320px);
+      line-height: .86;
+      font-weight: 900;
+      letter-spacing: -18px;
+      color: rgba(255,255,255,.06);
+      -webkit-text-stroke: 2px rgba(255,255,255,.16);
+      text-shadow:
+        0 120px 220px rgba(0,0,0,.70),
+        0 0 200px rgba(124,58,237,.18);
+      filter: saturate(1.04);
+      transform: translateY(0); /* no hidden offset */
+    }
+
+    /* Hero content is above watermark */
+    main.hero > .container{
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Hero tools (audio toggle) */
+    .heroTools{
+      position:absolute;
+      right: calc(12px + var(--safeR));
+      top: clamp(10px, 2vw, 16px);
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      z-index: 20;
+    }
+    .heroTools .hint{
+      display:none;
+    }
+
+    /* ✅ HERO volume slider (shows when unmuted; hidden on tiny screens) */
+    .heroVol{
+      display:none;
+      width: 130px;
+      height: calc(40px * var(--scale));
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 18px 64px rgba(0,0,0,.22);
+      padding: 0 12px;
+      appearance: none;
+      accent-color: var(--accentA);
+    }
+    .heroTools.unmuted .heroVol{ display:block; }
+    @media (max-width: 560px){
+      .heroVol{ display:none !important; }
+    }
+
+    .hero-wrap{
+      width:100%;
+      display:grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: clamp(16px, 2.6vw, 30px);
+      align-items: stretch;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .panel{
+      padding: clamp(22px, 2.6vw, 32px);
+      border-radius: var(--radius);
+      background: rgba(10,10,16,.55);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow:hidden;
+    }
+    .panel::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(620px 260px at 18% 12%, rgba(167,139,250,.18), transparent 62%),
+        radial-gradient(620px 260px at 86% 16%, rgba(124,58,237,.18), transparent 66%);
+      filter: blur(12px);
+      opacity:.95;
+      pointer-events:none;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.82);
+      font-size: calc(13px * var(--scale));
+      font-weight: 900;
+      position: relative;
+      z-index: 2;
+    }
+    .dot{
+      width: 9px;
+      height: 9px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--accentB), var(--accentA));
+      box-shadow: 0 0 22px rgba(124,58,237,.45);
+    }
+
+    h1{
+      margin: 16px 0 12px;
+      font-size: clamp(54px, 5vw, 88px);
+      line-height: 1.02;
+      letter-spacing: -1.2px;
+      position: relative;
+      z-index: 2;
+    }
+    .lead{ display:block; font-weight: 900; color: rgba(255,255,255,.94); }
+    .product{
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--accentB), var(--accentA));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 46px rgba(124,58,237,.18);
+      display:inline-block;
+    }
+
+    .sub{
+      margin: 0 0 20px;
+      max-width: 70ch;
+      color: rgba(255,255,255,.74);
+      font-size: calc(15.5px * var(--scale));
+      line-height: 1.62;
+      font-weight: 750;
+      position: relative;
+      z-index: 2;
+    }
+
+    .waitbar{
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      position: relative;
+      z-index: 2;
+    }
+    .waitlabel{
+      font-size: calc(13px * var(--scale));
+      color: rgba(255,255,255,.62);
+      text-align:center;
+      margin-bottom: 10px;
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+
+    form{
+      display:flex;
+      gap: 12px;
+      align-items:stretch;
+      justify-content:center;
+      flex-wrap: wrap;
+    }
+
+    .inputWrap{
+      flex: 1 1 380px;
+      min-width: min(560px, 100%);
+      position: relative;
+    }
+    .inputIcon{
+      position:absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      opacity:.82;
+      filter: drop-shadow(0 10px 18px rgba(124,58,237,.16));
+      pointer-events:none;
+    }
+    .input{
+      width: 100%;
+      height: calc(54px * var(--scale));
+      border-radius: 18px;
+      padding: 0 16px 0 44px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.22));
+      color: var(--text);
+      outline:none;
+      font-weight: 850;
+      font-size: calc(14px * var(--scale));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .input::placeholder{ color: rgba(255,255,255,.50); font-weight: 800; }
+    .input:focus{
+      border-color: rgba(167,139,250,.44);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.05),
+        0 0 0 4px rgba(124,58,237,.22);
+    }
+
+    .cta{
+      height: calc(54px * var(--scale));
+      padding: 0 calc(18px * var(--scale));
+      border-radius: 18px;
+      border: 1px solid rgba(124,58,237,.60);
+      background: linear-gradient(135deg, var(--accentA), var(--accentB));
+      color: #0b0713;
+      font-weight: 950;
+      letter-spacing: .2px;
+      cursor:pointer;
+      box-shadow: 0 18px 64px rgba(124,58,237,.22);
+      transition: transform .15s ease, filter .15s ease;
+      flex: 0 0 auto;
+      font-size: calc(14px * var(--scale));
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      min-width: 160px;
+    }
+    .cta:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .cta:active{ transform: translateY(0px) scale(.99); }
+    .spinner{
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 2px solid rgba(0,0,0,.22);
+      border-top-color: rgba(0,0,0,.62);
+      animation: spin .7s linear infinite;
+      display:none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .fine{
+      margin-top: 10px;
+      text-align:center;
+      color: rgba(255,255,255,.56);
+      font-size: calc(12.5px * var(--scale));
+      font-weight: 850;
+    }
+
+    /* WHY layout: aligned + tidy */
+    .why-title{
+      font-size: calc(16px * var(--scale));
+      font-weight: 950;
+      color: rgba(255,255,255,.92);
+      margin-bottom: 12px;
+      position:relative;
+      z-index:2;
+      letter-spacing: -.2px;
+    }
+    .why-list{
+      display:grid;
+      gap: 12px;
+      margin:0;
+      padding:0;
+      list-style:none;
+      position:relative;
+      z-index:2;
+    }
+    .why-item{
+      padding: 14px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      display:grid;
+      grid-template-columns: 104px 1fr; /* consistent left column */
+      gap: 12px;
+      align-items:start;
+      overflow:hidden;
+      position:relative;
+    }
+    .why-item::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(520px 160px at 12% 12%, rgba(124,58,237,.12), transparent 62%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 12px;
+      color: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(124,58,237,.24), rgba(167,139,250,.14));
+      white-space: nowrap;
+      position:relative;
+      z-index:2;
+      width: fit-content;
+    }
+    .why-item strong{
+      display:block;
+      font-weight: 950;
+      margin-bottom: 4px;
+      font-size: calc(14px * var(--scale));
+      letter-spacing: -.1px;
+      position:relative;
+      z-index:2;
+      background: linear-gradient(90deg, rgba(255,255,255,.96), rgba(167,139,250,.92));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .why-item span{
+      color: rgba(255,255,255,.72);
+      font-size: calc(13px * var(--scale));
+      line-height: 1.55;
+      font-weight: 780;
+      display:-webkit-box;
+      -webkit-line-clamp: 3; /* tidy but still readable */
+      -webkit-box-orient: vertical;
+      overflow:hidden;
+      position:relative;
+      z-index:2;
+    }
+
+    /* Scroll cue: breathing + nudge, stops after scroll */
+    .scrollCue{
+      position:absolute;
+      left: 50%;
+      bottom: clamp(18px, 2.6vw, 26px);
+      transform: translateX(-50%);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 10px;
+      user-select:none;
+      z-index: 30;
+      opacity: 1;
+      transition: opacity .22s ease, transform .22s ease;
+    }
+    .scrollCue.cueHidden{
+      opacity: 0;
+      transform: translateX(-50%) translateY(10px);
+      pointer-events:none;
+    }
+    .scrollCue a{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: rgba(255,255,255,.86);
+      font-weight: 950;
+      font-size: calc(13px * var(--scale));
+      letter-spacing: .1px;
+      box-shadow: 0 22px 80px rgba(0,0,0,.44);
+      transition: transform .15s ease, border-color .15s ease;
+      animation: cuePulse 2.8s ease-in-out infinite;
+    }
+    .scrollCue.stopAnim a{ animation: none; }
+    .scrollCue a:hover{
+      transform: translateY(-1px);
+      border-color: rgba(167,139,250,.22);
+    }
+    .scrollLine{
+      width: 140px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(167,139,250,.58), rgba(124,58,237,.58), transparent);
+      filter: drop-shadow(0 12px 22px rgba(124,58,237,.18));
+      opacity:.9;
+    }
+    .chev{
+      width: 16px;
+      height: 16px;
+      border-right: 3px solid rgba(255,255,255,.78);
+      border-bottom: 3px solid rgba(255,255,255,.78);
+      transform: rotate(45deg);
+      border-radius: 3px;
+      animation: cueNudge 2s ease-in-out infinite;
+      filter: drop-shadow(0 10px 22px rgba(124,58,237,.18));
+    }
+    .scrollCue.stopAnim .chev{ animation: none; }
+    @keyframes cuePulse{
+      0%,100%{
+        box-shadow: 0 22px 80px rgba(0,0,0,.44), 0 0 0 rgba(124,58,237,0);
+        border-color: rgba(255,255,255,.10);
+      }
+      50%{
+        box-shadow: 0 22px 80px rgba(0,0,0,.44), 0 0 46px rgba(124,58,237,.18);
+        border-color: rgba(167,139,250,.18);
+      }
+    }
+    @keyframes cueNudge{
+      0%,70%,100%{ transform: rotate(45deg) translate(0,0); opacity:.86; }
+      12%{ transform: rotate(45deg) translate(0,3px); opacity:1; }
+      24%{ transform: rotate(45deg) translate(0,0); opacity:.92; }
+    }
+
+    section{
+      padding: clamp(34px, 4.4vw, 64px) 0;
+    }
+    .section-head{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: clamp(22px, 2.6vw, 30px);
+      letter-spacing: -0.35px;
+      font-weight: 950;
+    }
+    .section-head p{
+      margin:0;
+      color: rgba(255,255,255,.72);
+      font-size: calc(14px * var(--scale));
+      max-width: 76ch;
+      line-height: 1.6;
+      font-weight: 780;
+    }
+    .caps{
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .22em;
+      color: rgba(167,139,250,.92);
+    }
+
+    .demoWrap{
+      display:grid;
+      grid-template-columns: 1.45fr .55fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .player{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 20px 90px rgba(0,0,0,.46);
+      position:relative;
+    }
+    .playerTop{
+      padding: 14px 16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+    }
+    .playerTitle{
+      display:flex;
+      flex-direction:column;
+      gap: 2px;
+      min-width:0;
+    }
+    .playerTitle strong{
+      font-weight: 950;
+      font-size: calc(14px * var(--scale));
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      background: linear-gradient(90deg, rgba(255,255,255,.96), rgba(167,139,250,.92));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .playerTitle span{
+      font-weight: 800;
+      color: rgba(255,255,255,.64);
+      font-size: calc(12.5px * var(--scale));
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .playerBadge{
+      font-weight: 950;
+      font-size: 12px;
+      letter-spacing: .14em;
+      color: rgba(167,139,250,.92);
+      opacity:.95;
+      white-space: nowrap;
+    }
+    .playerMedia{
+      aspect-ratio: 16 / 9;
+      background: rgba(0,0,0,.28);
+    }
+    .playerMedia video{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    .thumbs{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 20px 90px rgba(0,0,0,.36);
+    }
+    .thumbsHeader{
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+      font-weight: 950;
+      color: rgba(255,255,255,.86);
+      font-size: calc(13px * var(--scale));
+    }
+    .thumbList{
+      display:grid;
+      gap: 10px;
+      padding: 12px;
+    }
+    .thumb{
+      display:flex;
+      gap: 10px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      padding: 10px;
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      align-items:center;
+    }
+    .thumb:hover{
+      transform: translateY(-1px);
+      border-color: rgba(167,139,250,.22);
+      background: rgba(255,255,255,.07);
+    }
+    .thumb.active{
+      border-color: rgba(124,58,237,.55);
+      background: rgba(124,58,237,.10);
+      box-shadow: 0 18px 48px rgba(124,58,237,.10);
+    }
+    .thumb img{
+      width: 86px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.10);
+      flex: 0 0 auto;
+    }
+    .thumbTxt{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap: 2px;
+    }
+    .thumbTxt strong{
+      font-weight: 950;
+      font-size: calc(13px * var(--scale));
+      color: rgba(255,255,255,.92);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .thumbTxt span{
+      font-weight: 800;
+      font-size: calc(12px * var(--scale));
+      color: rgba(255,255,255,.62);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Capabilities (compact, text-first) */
+    .capCard{
+      margin-top: 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 24px 100px rgba(0,0,0,.36);
+      overflow:hidden;
+      position:relative;
+    }
+    .capCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(560px 220px at 12% 20%, rgba(167,139,250,.14), transparent 62%),
+        radial-gradient(560px 220px at 88% 20%, rgba(124,58,237,.12), transparent 66%);
+      filter: blur(12px);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .capHead{
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+      position:relative;
+      z-index:2;
+    }
+    .capHead strong{
+      display:block;
+      font-weight: 950;
+      font-size: calc(14px * var(--scale));
+      margin-bottom: 4px;
+      background: linear-gradient(90deg, rgba(255,255,255,.96), rgba(167,139,250,.92));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+    }
+    .capHead span{
+      display:block;
+      color: rgba(255,255,255,.66);
+      font-weight: 780;
+      font-size: calc(12.5px * var(--scale));
+      line-height: 1.55;
+    }
+    .capList{
+      padding: 14px;
+      display:grid;
+      gap: 10px;
+      position:relative;
+      z-index:2;
+    }
+    .capItem{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding: 12px 12px;
+      display:grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items:start;
+    }
+    .capDot{
+      width: 10px;
+      height: 10px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--accentB), var(--accentA));
+      box-shadow: 0 0 22px rgba(124,58,237,.38);
+      margin-top: 5px;
+    }
+    .capItem strong{
+      display:block;
+      font-weight: 950;
+      color: rgba(255,255,255,.92);
+      font-size: calc(13.5px * var(--scale));
+      margin-bottom: 3px;
+      letter-spacing: -.12px;
+    }
+    .capItem span{
+      display:block;
+      color: rgba(255,255,255,.68);
+      font-weight: 780;
+      font-size: calc(12.8px * var(--scale));
+      line-height: 1.55;
+    }
+
+    /* Testimonials rail (auto-advance + pause) */
+    .tRail{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 24px 100px rgba(0,0,0,.36);
+      overflow:hidden;
+      position:relative;
+    }
+    .tRail::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(560px 220px at 12% 20%, rgba(167,139,250,.14), transparent 62%),
+        radial-gradient(560px 220px at 88% 20%, rgba(124,58,237,.12), transparent 66%);
+      filter: blur(12px);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .tTop{
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      position:relative;
+      z-index:2;
+    }
+    .tTop strong{
+      font-weight: 950;
+      font-size: calc(13px * var(--scale));
+      color: rgba(255,255,255,.86);
+    }
+    .tViewport{
+      overflow-x:auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      position:relative;
+      z-index:2;
+    }
+    .tViewport::-webkit-scrollbar{ display:none; }
+    .tTrack{
+      display:flex;
+      gap: 16px;
+      padding: 16px;
+    }
+    .tCard{
+      scroll-snap-align: start;
+      flex: 0 0 calc((100% - 32px) / 3); /* desktop = 3 visible */
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 16px;
+      overflow:hidden;
+      position:relative;
+      box-shadow: 0 20px 70px rgba(0,0,0,.28);
+      min-height: 132px;
+    }
+    .tPills{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .tPill{
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      font-weight: 950;
+      font-size: 12px;
+      color: rgba(255,255,255,.86);
+    }
+    .tPill.verified{
+      background: linear-gradient(135deg, rgba(124,58,237,.24), rgba(167,139,250,.14));
+      border-color: rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+    }
+    .tQuote{
+      margin: 0 0 12px;
+      color: rgba(255,255,255,.80);
+      font-weight: 800;
+      font-size: calc(13.5px * var(--scale));
+      line-height: 1.55;
+      display:-webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow:hidden;
+    }
+    .tAuthor{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      color: rgba(255,255,255,.66);
+      font-weight: 800;
+      font-size: calc(12.5px * var(--scale));
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .tAvatar{
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      flex: 0 0 auto;
+      background: rgba(0,0,0,.18);
+    }
+    .tAvatar img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* CTA bar (keep layout) */
+    .communityCta{
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .communityCta strong{
+      font-weight: 950;
+      font-size: calc(14px * var(--scale));
+      background: linear-gradient(90deg, rgba(255,255,255,.96), rgba(167,139,250,.92));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+    }
+    .communityCta span{
+      display:block;
+      color: rgba(255,255,255,.70);
+      font-weight: 780;
+      font-size: calc(13px * var(--scale));
+      max-width: 68ch;
+    }
+
+    .pricingHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .toggle{
+      display:inline-flex;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      overflow:hidden;
+    }
+    .toggle button{
+      appearance:none;
+      border:0;
+      background: transparent;
+      color: rgba(255,255,255,.78);
+      font-weight: 950;
+      padding: 10px 14px;
+      cursor:pointer;
+      font-size: calc(13px * var(--scale));
+      transition: background .12s ease, color .12s ease;
+    }
+    .toggle button.active{
+      background: linear-gradient(135deg, rgba(124,58,237,.70), rgba(167,139,250,.38));
+      color: rgba(15,10,26,.92);
+    }
+    .plans{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+    }
+    .card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 18px;
+      overflow:hidden;
+      position:relative;
+      box-shadow: 0 20px 70px rgba(0,0,0,.38);
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(420px 200px at 14% 10%, rgba(167,139,250,.12), transparent 64%),
+        radial-gradient(420px 200px at 86% 10%, rgba(124,58,237,.10), transparent 66%);
+      filter: blur(12px);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .planTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+      position:relative;
+      z-index:2;
+    }
+    .planName{
+      font-weight: 950;
+      font-size: calc(16px * var(--scale));
+      color: rgba(255,255,255,.92);
+    }
+    .planPrice{
+      font-weight: 950;
+      font-size: calc(14px * var(--scale));
+      background: linear-gradient(90deg, rgba(167,139,250,.92), rgba(124,58,237,.92));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+    }
+    .bullets{
+      margin: 12px 0 0;
+      padding: 0;
+      list-style:none;
+      display:grid;
+      gap: 8px;
+      position:relative;
+      z-index:2;
+    }
+    .bullets li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      color: rgba(255,255,255,.72);
+      font-weight: 800;
+      font-size: calc(13px * var(--scale));
+      line-height: 1.5;
+    }
+    .tick{
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--accentB), var(--accentA));
+      box-shadow: 0 14px 30px rgba(124,58,237,.18);
+      flex: 0 0 auto;
+      position:relative;
+    }
+    .tick::after{
+      content:"";
+      position:absolute;
+      left: 4px;
+      top: 4px;
+      width: 7px;
+      height: 4px;
+      border-left: 2px solid rgba(10,6,18,.86);
+      border-bottom: 2px solid rgba(10,6,18,.86);
+      transform: rotate(-45deg);
+    }
+
+    .ctaBand{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: clamp(18px, 2.2vw, 24px);
+      box-shadow: 0 24px 100px rgba(0,0,0,.44);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      position:relative;
+      overflow:hidden;
+    }
+    .ctaBand::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(560px 220px at 12% 20%, rgba(167,139,250,.14), transparent 62%),
+        radial-gradient(560px 220px at 88% 20%, rgba(124,58,237,.12), transparent 66%);
+      filter: blur(12px);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .ctaBandLeft{
+      min-width: min(520px, 100%);
+      position:relative;
+      z-index:2;
+    }
+    .ctaBandLeft strong{
+      display:block;
+      font-weight: 950;
+      font-size: clamp(18px, 2vw, 22px);
+      margin-bottom: 6px;
+      background: linear-gradient(90deg, rgba(255,255,255,.96), rgba(167,139,250,.92));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+    }
+    .ctaBandLeft span{
+      display:block;
+      color: rgba(255,255,255,.70);
+      font-weight: 780;
+      font-size: calc(13.5px * var(--scale));
+      line-height: 1.55;
+      max-width: 78ch;
+    }
+
+    .faq{
+      display:grid;
+      gap: 12px;
+    }
+    details{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 14px 16px;
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight: 950;
+      font-size: calc(14px * var(--scale));
+      color: rgba(255,255,255,.92);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .accChev{
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid rgba(255,255,255,.70);
+      border-bottom: 2px solid rgba(255,255,255,.70);
+      transform: rotate(45deg);
+      transition: transform .15s ease;
+      flex: 0 0 auto;
+    }
+    details[open] .accChev{ transform: rotate(225deg); }
+    details p{
+      margin: 12px 0 0;
+      color: rgba(255,255,255,.72);
+      font-size: calc(13.5px * var(--scale));
+      line-height: 1.6;
+      font-weight: 780;
+      max-width: 86ch;
+    }
+
+    footer{
+      padding: 28px 0 44px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: rgba(255,255,255,.54);
+      font-size: calc(12.5px * var(--scale));
+      font-weight: 850;
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 14px;
+      flex-wrap:wrap;
+    }
+    .foot a{ color: rgba(255,255,255,.66); }
+    .foot a:hover{ color: rgba(255,255,255,.90); }
+
+    @media (max-width: 1100px){
+      .hero-wrap{ grid-template-columns: 1fr; max-width: 820px; }
+      .demoWrap{ grid-template-columns: 1fr; }
+      .thumbs{ order: 2; }
+      .plans{ grid-template-columns: 1fr; }
+      h1{ font-size: clamp(46px, 6.2vw, 74px); }
+      .tCard{ flex-basis: 88%; }
+    }
+
+    @media (max-width: 560px){
+      :root{ --navH: 72px; }
+      .nav-link{ display:none; }
+      .navFrame{ padding: 10px 10px; }
+      .brand{ font-size: 17px; }
+      .btn{ height: 44px; border-radius: 999px; }
+      .bigNum span{
+        font-size: clamp(420px, 92vw, 720px);
+        letter-spacing: -12px;
+        -webkit-text-stroke: 1.6px rgba(255,255,255,.14);
+      }
+      .why-item{ grid-template-columns: 1fr; }
+      .inputWrap{ flex-basis: 100%; min-width: 100%; }
+      .cta{ width: 100%; min-width: 100%; }
+      .scrollCue{ bottom: 16px; }
+      .scrollLine{ width: 120px; }
+      .thumb img{ width: 78px; height: 46px; }
+      .tQuote{ -webkit-line-clamp: 3; }
+    }
+
+    /* Reduced motion: stop attention cues + pause background videos */
+    @media (prefers-reduced-motion: reduce){
+      .scrollCue a, .chev{ animation: none !important; }
+      .btn, .cta, .thumb, .iconBtn{ transition: none; }
+    }
+    body.reduce-motion .scrollCue a,
+    body.reduce-motion .chev{ animation: none !important; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="navShell">
+      <div class="navInner">
+        <div class="navFrame">
+          <div class="nav-left">
+            <a class="brand" id="brandLink" href="#">
+              <span class="mark" aria-hidden="true"></span>
+              <span id="brandName"></span>
+            </a>
+            <a class="nav-link" id="homeLink" href="#"></a>
+          </div>
+          <div class="nav-right">
+            <a class="btn" id="loginLink" href="#"></a>
+            <a class="btn primary" id="signupLink" href="#"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="hero">
+    <!-- Background video layer -->
+    <div class="hero-media" id="heroMedia" aria-hidden="true">
+      <video
+        id="heroVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster=""
+      >
+        <source id="heroVideoSource" src="" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Readability overlay -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <!-- Big watermark number -->
+    <div class="bigNum" aria-hidden="true"><span id="bigNum"></span></div>
+
+    <div class="container">
+      <!-- Hero tools: audio toggle -->
+      <div class="heroTools" id="heroTools">
+        <button class="iconBtn" id="heroAudioBtn" type="button" aria-label="Unmute background video">
+          <span id="heroAudioIcon" aria-hidden="true"></span>
+        </button>
+        <input class="heroVol" id="heroVol" type="range" min="0" max="100" value="80" aria-label="Background video volume" />
+      </div>
+
+      <div class="hero-wrap">
+        <section class="panel" aria-label="Waitlist">
+          <span class="chip"><span class="dot"></span><span id="heroBadge"></span></span>
+
+          <h1>
+            <span class="lead" id="heroLead"></span>
+            <span class="product" id="heroProduct"></span>
+          </h1>
+
+          <p class="sub" id="heroSub"></p>
+
+          <div class="waitbar">
+            <div class="waitlabel" id="ctaLabel"></div>
+
+            <form id="waitlistForm">
+              <div class="inputWrap">
+                <svg class="inputIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 7.5C4 6.12 5.12 5 6.5 5h11C19.88 5 21 6.12 21 7.5v9c0 1.38-1.12 2.5-2.5 2.5h-11C5.12 19 4 17.88 4 16.5v-9Z" stroke="rgba(255,255,255,.78)" stroke-width="1.7"/>
+                  <path d="M5.5 7.5 12 12.2l6.5-4.7" stroke="rgba(167,139,250,.86)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <input class="input" id="email" type="email" required />
+              </div>
+
+              <button class="cta" id="ctaBtn" type="submit">
+                <span class="spinner" id="spin"></span>
+                <span id="ctaBtnText"></span>
+              </button>
+            </form>
+
+            <div class="fine" id="finePrint"></div>
+          </div>
+        </section>
+
+        <aside class="panel" aria-label="Why Midwayflow">
+          <div class="why-title" id="whyTitle"></div>
+          <ul class="why-list" id="whyList"></ul>
+        </aside>
+      </div>
+    </div>
+
+    <div class="scrollCue" id="scrollCue">
+      <div class="scrollLine" aria-hidden="true"></div>
+      <a href="#videos" id="scrollLink">
+        <span id="scrollHint"></span>
+        <span class="chev" aria-hidden="true"></span>
+      </a>
+    </div>
+  </main>
+
+  <section id="videos">
+    <div class="container">
+      <div class="section-head">
+        <div class="caps" id="videosCaps"></div>
+        <h2 id="videosTitle"></h2>
+        <p id="videosDesc"></p>
+      </div>
+
+      <div class="demoWrap">
+        <div class="player">
+          <div class="playerTop">
+            <div class="playerTitle">
+              <strong id="playerMainTitle"></strong>
+              <span id="playerMainSub"></span>
+            </div>
+            <div class="playerBadge">DEMO</div>
+          </div>
+          <div class="playerMedia">
+            <!-- Autoplay muted (no clicking play). User can unmute via controls if they want -->
+            <video id="playerVideo" muted autoplay loop playsinline preload="metadata" controls></video>
+          </div>
+        </div>
+
+        <aside class="thumbs">
+          <div class="thumbsHeader">Select a demo</div>
+          <div class="thumbList" id="thumbList"></div>
+        </aside>
+      </div>
+
+      <!-- Compact capabilities (replaces duplicated features section) -->
+      <div class="capCard" id="capCard">
+        <div class="capHead">
+          <strong id="capTitle"></strong>
+          <span id="capDesc"></span>
+        </div>
+        <div class="capList" id="capList"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="community">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="communityTitle"></h2>
+        <p id="communityDesc"></p>
+      </div>
+
+      <div class="tRail" aria-label="Testimonials">
+        <div class="tTop">
+          <strong>Testimonials</strong>
+          <!-- Minimal pause control (required for accessibility if auto-advancing) -->
+          <button class="iconBtn" id="tPauseBtn" type="button" aria-label="Pause testimonials">
+            <span id="tPauseIcon" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="tViewport" id="tViewport" tabindex="0" aria-label="Testimonials rail">
+          <div class="tTrack" id="tTrack"></div>
+        </div>
+      </div>
+
+      <div class="communityCta">
+        <div style="min-width:min(520px,100%);">
+          <strong id="communityCtaTitle"></strong>
+          <span id="communityCtaDesc"></span>
+        </div>
+        <a class="btn primary" href="#top">Join waitlist</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <div class="section-head pricingHead">
+        <div>
+          <h2 id="pricingTitle"></h2>
+          <p id="pricingDesc"></p>
+        </div>
+        <div class="toggle" role="tablist" aria-label="Pricing toggle">
+          <button id="tIndividual" class="active" type="button" role="tab"></button>
+          <button id="tTeam" type="button" role="tab"></button>
+        </div>
+      </div>
+
+      <div class="plans" id="plans"></div>
+    </div>
+  </section>
+
+  <section id="cta2">
+    <div class="container">
+      <div class="ctaBand">
+        <div class="ctaBandLeft">
+          <strong id="cta2Title"></strong>
+          <span id="cta2Desc"></span>
+        </div>
+
+        <form id="waitlistForm2" style="display:flex; gap:12px; align-items:stretch; flex-wrap:wrap; position:relative; z-index:2; min-width:min(560px,100%);">
+          <div class="inputWrap" style="min-width:min(360px,100%);">
+            <svg class="inputIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7.5C4 6.12 5.12 5 6.5 5h11C19.88 5 21 6.12 21 7.5v9c0 1.38-1.12 2.5-2.5 2.5h-11C5.12 19 4 17.88 4 16.5v-9Z" stroke="rgba(255,255,255,.78)" stroke-width="1.7"/>
+              <path d="M5.5 7.5 12 12.2l6.5-4.7" stroke="rgba(167,139,250,.86)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <input class="input" id="email2" type="email" required />
+          </div>
+          <button class="cta" id="ctaBtn2" type="submit">
+            <span class="spinner" id="spin2"></span>
+            <span id="ctaBtnText2"></span>
+          </button>
+        </form>
+      </div>
+      <div class="fine" id="finePrint2" style="margin-top:10px;"></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="faqTitle"></h2>
+        <p id="faqDesc"></p>
+      </div>
+      <div class="faq" id="faqGrid"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div>© <span id="year"></span> <span id="brandName2"></span>. All rights reserved.</div>
+      <div style="display:flex; gap:14px;">
+        <a id="privacy" href="#">Privacy</a>
+        <a id="terms" href="#">Terms</a>
+        <a id="contact" href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    const ICONS = {
+      volOn: `
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M11 5 6.7 8.4H4.5A2 2 0 0 0 2.5 10.4v3.2a2 2 0 0 0 2 2h2.2L11 19V5Z" stroke="rgba(255,255,255,.86)" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M15.5 8.4c1.2 1.2 1.2 6 0 7.2" stroke="rgba(167,139,250,.92)" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M18.3 6.2c2.1 2.1 2.1 9.5 0 11.6" stroke="rgba(167,139,250,.70)" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      `,
+      volOff: `
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M11 5 6.7 8.4H4.5A2 2 0 0 0 2.5 10.4v3.2a2 2 0 0 0 2 2h2.2L11 19V5Z" stroke="rgba(255,255,255,.86)" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M16.2 9.2 21 14" stroke="rgba(167,139,250,.92)" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M21 9.2 16.2 14" stroke="rgba(167,139,250,.92)" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      `,
+      pause: `
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M8 6.5v11" stroke="rgba(255,255,255,.86)" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M16 6.5v11" stroke="rgba(255,255,255,.86)" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      `,
+      play: `
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 7.5v9l8-4.5-8-4.5Z" fill="rgba(255,255,255,.86)"/>
+        </svg>
+      `
+    };
+
+    function isReducedMotion() {
+      return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+
+    function applyConfig() {
+      document.documentElement.style.setProperty("--accentA", CONFIG.theme.accentA);
+      document.documentElement.style.setProperty("--accentB", CONFIG.theme.accentB);
+      document.documentElement.style.setProperty("--bgTop", CONFIG.theme.bgTop);
+      document.documentElement.style.setProperty("--bgBottom", CONFIG.theme.bgBottom);
+      document.documentElement.style.setProperty("--scale", String(CONFIG.theme.uiScale || 1));
+
+      $("brandName").textContent = CONFIG.brand.name;
+      $("brandName2").textContent = CONFIG.brand.name;
+
+      $("homeLink").textContent = "Home";
+      $("homeLink").href = CONFIG.links.home;
+
+      // Login visibility logic (only show if real)
+      if (!CONFIG.links.showLogin) {
+        $("loginLink").style.display = "none";
+      } else {
+        $("loginLink").textContent = "Log in";
+        $("loginLink").href = CONFIG.links.login;
+      }
+
+      // Waitlist CTA copy (header)
+      $("signupLink").textContent = "Join waitlist";
+      $("signupLink").href = CONFIG.links.signup;
+
+      $("bigNum").textContent = CONFIG.hero.bigNumber;
+
+      $("heroBadge").textContent = CONFIG.hero.badge;
+      $("heroLead").textContent = CONFIG.hero.headlineLead;
+      $("heroProduct").textContent = CONFIG.hero.productName;
+      $("heroSub").textContent = CONFIG.hero.subcopy;
+
+      $("ctaLabel").textContent = CONFIG.hero.ctaLabel;
+      $("email").placeholder = CONFIG.hero.emailPlaceholder;
+      $("ctaBtnText").textContent = CONFIG.hero.buttonText;
+      $("finePrint").textContent = CONFIG.hero.finePrint;
+
+      $("scrollHint").textContent = CONFIG.hero.scrollHint;
+
+      $("whyTitle").textContent = CONFIG.why.title;
+      $("whyList").innerHTML = CONFIG.why.items.map(x =>
+        `<li class="why-item">
+          <span class="pill">${x.chip}</span>
+          <div>
+            <strong>${x.title}</strong>
+            <span>${x.desc}</span>
+          </div>
+        </li>`
+      ).join("");
+
+      $("videosCaps").textContent = CONFIG.sections.videosTitle;
+      $("videosTitle").textContent = CONFIG.sections.videosTitle;
+      $("videosDesc").textContent = CONFIG.sections.videosDesc;
+
+      // Capabilities
+      $("capTitle").textContent = CONFIG.sections.capabilitiesTitle;
+      $("capDesc").textContent = CONFIG.sections.capabilitiesDesc;
+      $("capList").innerHTML = (CONFIG.sections.capabilities || []).map(x => `
+        <div class="capItem">
+          <span class="capDot" aria-hidden="true"></span>
+          <div>
+            <strong>${x.title}</strong>
+            <span>${x.desc}</span>
+          </div>
+        </div>
+      `).join("");
+
+      initDemoGallery(CONFIG.media.demoVideos || []);
+      initHeroVideo();
+      initTestimonials();
+
+      $("pricingTitle").textContent = CONFIG.sections.pricingTitle;
+      $("pricingDesc").textContent = CONFIG.sections.pricingDesc;
+      $("tIndividual").textContent = CONFIG.sections.pricingToggleA;
+      $("tTeam").textContent = CONFIG.sections.pricingToggleB;
+
+      $("cta2Title").textContent = CONFIG.sections.cta2Title;
+      $("cta2Desc").textContent = CONFIG.sections.cta2Desc;
+      $("email2").placeholder = CONFIG.hero.emailPlaceholder;
+      $("ctaBtnText2").textContent = CONFIG.hero.buttonText;
+      $("finePrint2").textContent = CONFIG.hero.finePrint;
+
+      $("communityTitle").textContent = CONFIG.sections.communityTitle;
+      $("communityDesc").textContent = CONFIG.sections.communityDesc;
+      $("communityCtaTitle").textContent = CONFIG.sections.communityCtaTitle;
+      $("communityCtaDesc").textContent = CONFIG.sections.communityCtaDesc;
+
+      $("faqTitle").textContent = CONFIG.sections.faqTitle;
+      $("faqDesc").textContent = CONFIG.sections.faqDesc;
+      $("faqGrid").innerHTML = (CONFIG.sections.faqs || []).map(x => `
+        <details>
+          <summary>${x.q}<span class="accChev" aria-hidden="true"></span></summary>
+          <p>${x.a}</p>
+        </details>
+      `).join("");
+
+      $("privacy").href = CONFIG.footer.privacy;
+      $("terms").href = CONFIG.footer.terms;
+      $("contact").href = CONFIG.footer.contact;
+
+      $("year").textContent = new Date().getFullYear();
+
+      renderPlans("individual");
+    }
+
+    function bindAnchors() {
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener("click",(e)=>{
+          const id = a.getAttribute("href");
+          if (!id || id.length < 2) return;
+          const el = document.querySelector(id);
+          if (!el) return;
+          e.preventDefault();
+          el.scrollIntoView({behavior:"smooth", block:"start"});
+          history.replaceState(null, "", id);
+        }, { passive: false });
+      });
+    }
+
+    function setBtnLoading(btnId, spinId, textId, loading) {
+      const btn = $(btnId);
+      const sp = $(spinId);
+      const tx = $(textId);
+      if (loading) {
+        sp.style.display = "inline-block";
+        btn.disabled = true;
+        btn.style.opacity = ".92";
+        tx.textContent = "Submitting…";
+      } else {
+        sp.style.display = "none";
+        btn.disabled = false;
+        btn.style.opacity = "1";
+        tx.textContent = CONFIG.hero.buttonText;
+      }
+    }
+
+    async function submitWaitlist(emailValue) {
+      const endpoint = (CONFIG.waitlist.endpoint || "").trim();
+      if (!endpoint) return { ok: true };
+      const res = await fetch(endpoint, {
+        method: CONFIG.waitlist.method || "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: emailValue })
+      });
+      return { ok: res.ok };
+    }
+
+    function bindWaitlist(formId, emailId, fineId, btnId, spinId, textId) {
+      const form = $(formId);
+      const email = $(emailId);
+      const fine = $(fineId);
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const val = (email.value || "").trim();
+        if (!val || !val.includes("@")) {
+          fine.textContent = "Please enter a valid email.";
+          fine.style.color = "rgba(255,120,120,.92)";
+          return;
+        }
+
+        setBtnLoading(btnId, spinId, textId, true);
+        try {
+          const out = await submitWaitlist(val);
+          if (!out.ok) throw new Error("bad");
+        } catch {
+          setBtnLoading(btnId, spinId, textId, false);
+          fine.textContent = CONFIG.waitlist.errorMessage;
+          fine.style.color = "rgba(255,120,120,.92)";
+          return;
+        }
+
+        setBtnLoading(btnId, spinId, textId, false);
+        fine.textContent = CONFIG.waitlist.successMessage;
+        fine.style.color = "rgba(167,139,250,.92)";
+        email.value = "";
+      });
+    }
+
+    /* ===========================
+       HERO VIDEO (FIXED)
+       =========================== */
+    function initHeroVideo() {
+      const heroMedia = $("heroMedia");
+      const tools = $("heroTools");
+      const v = $("heroVideo");
+      const srcEl = $("heroVideoSource");
+      const btn = $("heroAudioBtn");
+      const vol = $("heroVol");
+
+      const isProbablyImage = (u) => /\.(png|jpe?g|webp|gif|avif)(\?|#|$)/i.test(u || "");
+      const guessType = (u) => {
+        const url = (u || "").toLowerCase();
+        if (url.includes(".webm")) return "video/webm";
+        if (url.includes(".ogv") || url.includes(".ogg")) return "video/ogg";
+        return "video/mp4";
+      };
+
+      // Keep reduced-motion class (stops other animations), but DO NOT disable hero video.
+      if (isReducedMotion()) document.body.classList.add("reduce-motion");
+
+      // Pick portrait vs landscape asset
+      function pickHeroVariant() {
+        const portraitMQ = window.matchMedia && window.matchMedia("(orientation: portrait)").matches;
+        const isPortrait = portraitMQ || window.innerWidth < 740;
+
+        const videoUrl =
+          (isPortrait ? (CONFIG.media.heroVideoPortraitUrl || "") : (CONFIG.media.heroVideoLandscapeUrl || "")) ||
+          (CONFIG.media.heroVideoUrl || "");
+
+        const posterUrl =
+          (isPortrait ? (CONFIG.media.heroPosterPortraitUrl || "") : (CONFIG.media.heroPosterLandscapeUrl || "")) ||
+          (CONFIG.media.heroPosterUrl || "");
+
+        const fallbackUrl =
+          (isPortrait ? (CONFIG.media.heroFallbackImagePortraitUrl || "") : (CONFIG.media.heroFallbackImageLandscapeUrl || "")) ||
+          (CONFIG.media.heroFallbackImageUrl || "");
+
+        return { isPortrait, videoUrl: (videoUrl || "").trim(), posterUrl: (posterUrl || "").trim(), fallbackUrl: (fallbackUrl || "").trim() };
+      }
+
+      function applyFallbackBG(fallbackUrl) {
+        // Always keep gradients; only add url() if it looks like an image
+        if (isProbablyImage(fallbackUrl)) {
+          heroMedia.style.background =
+            `radial-gradient(1200px 720px at 50% 34%, rgba(124,58,237,.20), transparent 62%),
+             linear-gradient(180deg, rgba(0,0,0,.50), rgba(0,0,0,.78)),
+             url("${fallbackUrl}") center/cover no-repeat`;
+        } else {
+          heroMedia.style.background =
+            `radial-gradient(1200px 720px at 50% 34%, rgba(124,58,237,.20), transparent 62%),
+             linear-gradient(180deg, rgba(0,0,0,.50), rgba(0,0,0,.78))`;
+        }
+      }
+
+      function syncAudioUI() {
+        $("heroAudioIcon").innerHTML = v.muted ? ICONS.volOff : ICONS.volOn;
+        btn.setAttribute("aria-label", v.muted ? "Unmute background video" : "Mute background video");
+        tools.classList.toggle("unmuted", !v.muted);
+      }
+
+      // ✅ Autoplay reliability: ALWAYS start muted first (so autoplay is allowed),
+      // then user can unmute via click.
+      function forceMutedAutoplayStart() {
+        v.muted = true;
+        v.setAttribute("muted", "");
+        syncAudioUI();
+
+        const p = v.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      }
+
+      // Volume persistence
+      const storedVol = Number(localStorage.getItem("mw_video_vol") || "80");
+      const safeVol = Number.isFinite(storedVol) ? Math.max(0, Math.min(100, storedVol)) : 80;
+      vol.value = String(safeVol);
+      v.volume = safeVol / 100;
+
+      vol.addEventListener("input", () => {
+        const val = Number(vol.value || "80");
+        const clamped = Math.max(0, Math.min(100, val));
+        v.volume = clamped / 100;
+        localStorage.setItem("mw_video_vol", String(clamped));
+      });
+
+      // Apply current variant (and re-apply on orientation/resize)
+      let currentKey = "";
+      function applyVariant() {
+        const { isPortrait, videoUrl, posterUrl, fallbackUrl } = pickHeroVariant();
+        const key = `${isPortrait ? "P" : "L"}|${videoUrl}`;
+        if (key === currentKey) return;
+        currentKey = key;
+
+        applyFallbackBG(fallbackUrl);
+
+        if (!videoUrl) {
+          v.style.display = "none";
+          btn.style.display = "none";
+          vol.style.display = "none";
+          return;
+        }
+
+        v.style.display = "block";
+        btn.style.display = "inline-flex";
+
+        // Poster should be an IMAGE; ignore if not image-like
+        if (isProbablyImage(posterUrl)) v.poster = posterUrl;
+
+        // Ensure required autoplay attributes are present
+        v.setAttribute("autoplay", "");
+        v.setAttribute("loop", "");
+        v.setAttribute("playsinline", "");
+        v.setAttribute("preload", "metadata");
+
+        // Set <source> for better type signaling
+        srcEl.type = guessType(videoUrl);
+        srcEl.src = videoUrl;
+        v.load();
+
+        // Start muted autoplay immediately + retry when ready
+        forceMutedAutoplayStart();
+        v.addEventListener("loadeddata", forceMutedAutoplayStart, { once: true });
+        v.addEventListener("canplay", forceMutedAutoplayStart, { once: true });
+      }
+
+      // Initial UI state: show icon even before play resolves
+      syncAudioUI();
+
+      // Apply now
+      applyVariant();
+
+      // Re-apply on rotate / resize (debounced)
+      let t = 0;
+      const onResize = () => {
+        clearTimeout(t);
+        t = setTimeout(applyVariant, 180);
+      };
+      window.addEventListener("resize", onResize, { passive: true });
+      window.addEventListener("orientationchange", onResize);
+
+      // Audio button: user gesture -> unmute + play
+      btn.addEventListener("click", () => {
+        const nextMuted = !v.muted;
+        v.muted = nextMuted;
+        if (nextMuted) v.setAttribute("muted", "");
+        else v.removeAttribute("muted");
+
+        localStorage.setItem("mw_video_muted", nextMuted ? "1" : "0");
+        syncAudioUI();
+
+        // If unmuting, must call play() inside user gesture handler
+        const p = v.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      });
+
+      // If user previously saved "unmuted", we still start muted for autoplay.
+      // But we keep the preference so the next click restores their intent.
+      // (Autoplay-with-sound is typically blocked by browsers.) 
+    }
+
+    function initDemoGallery(items) {
+      const list = $("thumbList");
+      const player = $("playerVideo");
+      const title = $("playerMainTitle");
+      const sub = $("playerMainSub");
+
+      if (!items.length) {
+        list.innerHTML = "";
+        title.textContent = "No demos configured";
+        sub.textContent = "Add items in CONFIG.media.demoVideos";
+        player.removeAttribute("src");
+        return;
+      }
+
+      function setActive(i) {
+        const item = items[i];
+        title.textContent = item.title || "Demo";
+        sub.textContent = item.subtitle || "";
+
+        // Autoplay muted (no play click)
+        player.muted = true;
+        player.loop = true;
+        player.playsInline = true;
+        player.setAttribute("playsinline", "");
+        player.setAttribute("preload", "metadata");
+
+        if (item.poster) player.poster = item.poster;
+        player.src = item.video || "";
+        player.load();
+
+        // Try to start playback immediately (muted => generally allowed)
+        player.play().catch(() => {});
+
+        list.querySelectorAll(".thumb").forEach((el, idx) => {
+          el.classList.toggle("active", idx === i);
+        });
+      }
+
+      list.innerHTML = items.map((x, i) => `
+        <div class="thumb" data-i="${i}" role="button" tabindex="0" aria-label="Select demo ${i+1}">
+          <img src="${x.thumb}" alt="" loading="lazy"/>
+          <div class="thumbTxt">
+            <strong>${x.title || "Demo"}</strong>
+            <span>${x.subtitle || ""}</span>
+          </div>
+        </div>
+      `).join("");
+
+      list.addEventListener("click", (e) => {
+        const t = e.target.closest(".thumb");
+        if (!t) return;
+        setActive(Number(t.dataset.i));
+      });
+
+      list.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        const t = e.target.closest(".thumb");
+        if (!t) return;
+        e.preventDefault();
+        setActive(Number(t.dataset.i));
+      });
+
+      setActive(0);
+    }
+
+    function initScrollCue() {
+      const cue = $("scrollCue");
+      if (!cue) return;
+
+      const stopAt = 100;
+      let ticking = false;
+
+      function update() {
+        ticking = false;
+        const y = window.scrollY || document.documentElement.scrollTop || 0;
+
+        // fade/hide after scroll
+        cue.classList.toggle("cueHidden", y > stopAt);
+
+        // stop animations after slight scroll so it doesn’t distract
+        cue.classList.toggle("stopAnim", y > stopAt);
+      }
+
+      window.addEventListener("scroll", () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+      }, { passive: true });
+
+      update();
+    }
+
+    function initTestimonials() {
+      const items = (CONFIG.testimonials && CONFIG.testimonials.items) || [];
+      const viewport = $("tViewport");
+      const track = $("tTrack");
+      const pauseBtn = $("tPauseBtn");
+
+      if (!items.length) {
+        track.innerHTML = "";
+        pauseBtn.style.display = "none";
+        return;
+      }
+
+      track.innerHTML = items.map((t) => `
+        <article class="tCard">
+          <div class="tPills">
+            <span class="tPill">${t.tag}</span>
+            <span class="tPill verified">Verified</span>
+          </div>
+          <p class="tQuote">“${t.quote}”</p>
+          <div class="tAuthor">
+            <span class="tAvatar" aria-hidden="true"><img src="${t.avatar}" alt="" loading="lazy"></span>
+            <span>${t.author}</span>
+          </div>
+        </article>
+      `).join("");
+
+      let idx = 0;
+      let timer = null;
+      let paused = false;
+
+      function setPauseUI() {
+        $("tPauseIcon").innerHTML = paused ? ICONS.play : ICONS.pause;
+        pauseBtn.setAttribute("aria-label", paused ? "Play testimonials" : "Pause testimonials");
+      }
+      setPauseUI();
+
+      function cards() {
+        return Array.from(track.querySelectorAll(".tCard"));
+      }
+
+      function go(i, smooth = true) {
+        const cs = cards();
+        if (!cs.length) return;
+        idx = (i + cs.length) % cs.length;
+        const target = cs[idx];
+        viewport.scrollTo({ left: target.offsetLeft - 16, behavior: smooth ? "smooth" : "auto" });
+      }
+
+      function start() {
+        if (timer) clearInterval(timer);
+        if (paused) return;
+        if (isReducedMotion()) return; // respect reduced motion
+        const ms = CONFIG.testimonials.intervalMs || 4800;
+        timer = setInterval(() => go(idx + 1), ms);
+      }
+
+      function stop() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
+
+      // Pause on interaction (hover/focus/touch), resume when safe
+      viewport.addEventListener("pointerdown", () => { stop(); }, { passive: true });
+      viewport.addEventListener("mouseenter", () => { stop(); }, { passive: true });
+      viewport.addEventListener("focusin", () => { stop(); });
+      viewport.addEventListener("mouseleave", () => { if (!paused) start(); }, { passive: true });
+      viewport.addEventListener("focusout", () => { if (!paused) start(); });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stop();
+        else if (!paused) start();
+      });
+
+      pauseBtn.addEventListener("click", () => {
+        paused = !paused;
+        setPauseUI();
+        if (paused) stop();
+        else start();
+      });
+
+      // Update idx when user scrolls manually
+      let raf = 0;
+      viewport.addEventListener("scroll", () => {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const cs = cards();
+          const x = viewport.scrollLeft;
+          let best = 0;
+          let bestDist = Infinity;
+          cs.forEach((c, i) => {
+            const d = Math.abs((c.offsetLeft - 16) - x);
+            if (d < bestDist) { bestDist = d; best = i; }
+          });
+          idx = best;
+        });
+      }, { passive: true });
+
+      // Start position + autoplay
+      go(0, false);
+      start();
+
+      // If reduced motion: hide pause (no autoplay anyway)
+      if (isReducedMotion()) {
+        pauseBtn.style.display = "none";
+      }
+    }
+
+    function renderPlans(mode) {
+      const wrap = $("plans");
+      const plans = (CONFIG.sections.pricingPlans && CONFIG.sections.pricingPlans[mode]) || [];
+      wrap.innerHTML = plans.map(p => `
+        <article class="card">
+          <div class="planTop">
+            <div class="planName">${p.name}</div>
+            <div class="planPrice">${p.price}</div>
+          </div>
+          <ul class="bullets">
+            ${(p.bullets || []).map(b => `<li><span class="tick" aria-hidden="true"></span><span>${b}</span></li>`).join("")}
+          </ul>
+        </article>
+      `).join("");
+    }
+
+    function bindPricingToggle() {
+      const a = $("tIndividual");
+      const b = $("tTeam");
+      a.addEventListener("click", () => {
+        a.classList.add("active"); b.classList.remove("active");
+        renderPlans("individual");
+      });
+      b.addEventListener("click", () => {
+        b.classList.add("active"); a.classList.remove("active");
+        renderPlans("team");
+      });
+    }
+
+    applyConfig();
+    bindAnchors();
+    initScrollCue();
+    bindWaitlist("waitlistForm", "email", "finePrint", "ctaBtn", "spin", "ctaBtnText");
+    bindWaitlist("waitlistForm2", "email2", "finePrint2", "ctaBtn2", "spin2", "ctaBtnText2");
+    bindPricingToggle();
+  </script>
+</body>
+</html>
