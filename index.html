@@ -5,7 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Midwayflow — Seedance 2.0 Waitlist</title>
 
+<script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore-compat.js"></script>  
+  
   <script>
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAiiUTk2O8Xj7Wc3cSXqFZGT4FoeHQWJJ8",
+  authDomain: "midwayflowwaitlist.firebaseapp.com",
+  projectId: "midwayflowwaitlist",
+  storageBucket: "midwayflowwaitlist.firebasestorage.app",
+  messagingSenderId: "614343646908",
+  appId: "1:614343646908:web:b285cc2e17466f8e973ab9"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+    
     const CONFIG = {
       links: {
         home: "#top",
@@ -2389,15 +2404,24 @@ main.hero > .container{ z-index: 3 !important; }
     }
 
     async function submitWaitlist(emailValue) {
-      const endpoint = (CONFIG.waitlist.endpoint || "").trim();
-      if (!endpoint) return { ok: true };
-      const res = await fetch(endpoint, {
-        method: CONFIG.waitlist.method || "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: emailValue })
-      });
-      return { ok: res.ok };
+  const email = String(emailValue || "").trim().toLowerCase();
+  const docId = encodeURIComponent(email);
+
+  try {
+    await db.collection("waitlist_emails").doc(docId).set({
+      email,
+      source: "seedance2waitlist-midwayflow",
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: false });
+
+    return { ok: true };
+  } catch (err) {
+    if (err && err.code === "permission-denied") {
+      return { ok: true, duplicate: true };
     }
+    return { ok: false };
+  }
+}
 
     function bindWaitlist(formId, emailId, fineId, btnId, spinId, textId) {
       const form = $(formId);
