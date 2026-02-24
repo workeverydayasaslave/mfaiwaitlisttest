@@ -6,9 +6,9 @@
   <title>Midwayflow — Seedance 2.0 Waitlist</title>
 
 <script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore-compat.js"></script>  
-  
-  <script>
+<script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore-compat.js"></script>
+
+<script>
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyAiiUTk2O8Xj7Wc3cSXqFZGT4FoeHQWJJ8",
   authDomain: "midwayflowwaitlist.firebaseapp.com",
@@ -18,8 +18,15 @@ const FIREBASE_CONFIG = {
   appId: "1:614343646908:web:b285cc2e17466f8e973ab9"
 };
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+let db = null;
+try {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(FIREBASE_CONFIG);
+  }
+  db = firebase.firestore();
+} catch (e) {
+  console.error("Firebase init failed:", e);
+}
     
     const CONFIG = {
       links: {
@@ -2403,22 +2410,38 @@ main.hero > .container{ z-index: 3 !important; }
       }
     }
 
-    async function submitWaitlist(emailValue) {
+ async function submitWaitlist(emailValue) {
   const email = String(emailValue || "").trim().toLowerCase();
-  const docId = encodeURIComponent(email);
+  if (!email || !email.includes("@")) return { ok: false };
+
+  // 优先走后端
+  if (CONFIG.waitlist.endpoint) {
+    try {
+      const res = await fetch(CONFIG.waitlist.endpoint, {
+        method: CONFIG.waitlist.method || "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "seedance2waitlist-midwayflow" })
+      });
+      return { ok: res.ok };
+    } catch (e) {
+      console.error("Backend submit failed:", e);
+      return { ok: false };
+    }
+  }
+
+  // 回退到 Firestore
+  if (!db) return { ok: false };
 
   try {
-    await db.collection("waitlist_emails").doc(docId).set({
+    await db.collection("waitlist_emails").doc(encodeURIComponent(email)).set({
       email,
       source: "seedance2waitlist-midwayflow",
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    }, { merge: false });
+    }, { merge: true });
 
     return { ok: true };
   } catch (err) {
-    if (err && err.code === "permission-denied") {
-      return { ok: true, duplicate: true };
-    }
+    console.error("Firestore write failed:", err);
     return { ok: false };
   }
 }
